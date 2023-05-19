@@ -1,0 +1,17 @@
+---
+version: 1.0
+configuration:
+  has_webserver: false
+  readonly_paths:
+    - FurnitureFactory/src/test/*
+  scoring:
+    command: "cd FurnitureFactory; mvn clean test -Dtest=UnitTestSuite; cd target/surefire-reports; cat *.xml >> unit.xml"
+    files:
+      - "FurnitureFactory/target/surefire-reports/unit.xml"
+  ide_config:
+    default_open_files:
+      - FurnitureFactory/src/main/java/hackerrank/FurnitureOrder.java
+    project_menu:
+      run: cd FurnitureFactory; mvn clean install
+      install: cd FurnitureFactory; mvn clean
+      test: cd FurnitureFactory; mvn clean test -Dtest=SampleUnitTest
