@@ -1,0 +1,6 @@
+FROM openjdk:8
+COPY . /usr/src/myapp/com/hcl
+WORKDIR /usr/src/myapp/com/hcl
+RUN javac Main.java
+WORKDIR /usr/src/myapp
+CMD ["java", "com.hcl.Main"]

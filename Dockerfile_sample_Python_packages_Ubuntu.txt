@@ -1,0 +1,31 @@
+
+FROM ubuntu:18.04
+RUN apt update
+RUN apt install -y python3.8
+
+
+# docker image build . -t work
+# docker container run --rm -it work:latest /bin/sh
+
+
+FROM python:latest
+RUN pip install Jupyter
+RUN pip install pandas
+RUN pip install matplotlib
+RUN pip install scikit-learn
+
+
+# docker image build . -t python_work
+# docker container run --rm -it python_work:latest 
+
+
+# final file for opening Jupyter notebook
+
+
+FROM python:latest
+RUN pip install Jupyter
+RUN pip install pandas
+RUN pip install matplotlib
+RUN pip install scikit-learn
+EXPOSE 8888/tcp
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

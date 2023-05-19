@@ -1,0 +1,8 @@
+FROM python 
+COPY . /root/pythonapps
+WORKDIR /root/pythonapps
+CMD ["args.py"]
+ENTRYPOINT ["python"]
+
+
+ 

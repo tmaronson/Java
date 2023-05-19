@@ -1,0 +1,61 @@
+
+# Example of using JDK image with Docker                              
+# You can change Java source file, paths, directories to whatever works 
+
+docker pull openjdk:8  # get image but don't need this when use Dockerfile
+
+# Dockerfile, Main.java, docker1.sh in directory /root/workspaces on docker sandbox O'Reilly - can adapt dir. structure
+# Main.java or can be any Java file or app
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("This is a test");
+    }
+}
+
+#Dockerfile
+FROM openjdk:8
+COPY . /usr/src/myapp
+WORKDIR /usr/src/myapp
+RUN javac Main.java
+CMD ["java", "Main"] 
+
+
+# For same Java file but now in package com.hcl
+
+package com.hcl;
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("This is a test");
+    }
+}
+
+FROM openjdk:8
+COPY . /usr/src/myapp/com/hcl
+WORKDIR /usr/src/myapp/com/hcl
+RUN javac Main.java
+WORKDIR /usr/src/myapp
+CMD ["java", "com.hcl.Main"]
+
+#docker1.sh   
+docker build -t java-app . # tag build of Dockerfile - this will be name of new image
+docker run -it java-app    # run app
+# can use docker run java-app
+
+chmod +x docker1.sh  # execute permission for owner, group, others
+./docker1.sh  # run script
+
+$ docker images | grep java
+java-app                   latest              afb17b6e2e27        3 minutes ago       514MB
+
+
+#Example of using Python with Docker
+# You can change Python source file, paths, directories to whatever works 
+# Dockerfilepython, args.py, docker2.sh in directory /root/pythonapps on docker playground app - can adapt dir. structure
+
+#docker2.sh
+docker build -t python-args . # tag build of Dockerfilepython
+docker run -it python-args    # run app
+
+chmod +x docker2.sh  # execute permission for owner, group, others
+./docker2.sh  # run script
+
