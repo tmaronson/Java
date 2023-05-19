@@ -1,0 +1,108 @@
+#1  Hints: Make a chart with columns n, what you are pushing on the STACK (push 1 if n % 2 == 1, 0 otherwise), keep going through loop
+until n <= 0. Make sure you enter each value you push on the STACK from left to right or LIFO order.
+/ operator is integer division s0 11/5 = 2.
+% operator is modulus (remainder) so 11 % 5 = 1.
+
+INTEGER n
+n = 100
+STACK s
+while (n > 0)
+    s.push(n % 2 == 1)             0
+    n = n/2
+
+while (!s.empty())
+    PRINT s.pop()  // pop elements from top of stack since LIFO
+	
+	
+#2 Hints: Make a chart with columns n, what you are pusing on the QUEUE (n % 3), keep going through loop
+until n <= 0. Make sure you enter each value you push on the QUEUE from right to left or FIFO order.
+/ operator is integer division s0 11/5 = 2.
+% operator is modulus (remainder) so 11 % 5 = 1.
+
+INTEGER n;
+n = 80;
+QUEUE q;
+while (n > 0)
+    q.push(n % 3)  // push or add to end of queue the value for n % 3.  22
+    n /= 3
+
+while (q.size())
+    PRINT q.front()  // remove elements from front first since FIFO
+    q.pop()
+	
+	
+#3   
+
+What is the output of the following program?
+
+
+int calc ( int x )
+{
+        if ( x <= 0 )  // base case
+                return 0;
+        else
+                return calc(x-2) + x;  // recursive call   cout<< means print.
+}
+
+calc(10); // call calc(int) function above
+
+return calc(8) + 10
+return calc (6) + 8
+return calc (4) + 6
+return calc (2) + 4
+return calc (0) + 2  = 0 + 2 = 2
+
+
+
+#4 Hints: Make a chart with columns j and don't forget to remember the subtraction operator (-) for each call.
+This will take careful thinking rather than using the addition operator 
+
+static int calc2(int j) {
+        
+        if (j > 0) {
+            return j - calc2(j - 1); // recursive function call
+        } else {
+            return 0; // base case
+        }
+}
+calc2(3);  // call calc2(int) function above
+
+
+#5 Hints: What is the goal of the partition algorithm or partition method in quicksort?
+
+Find position of pivot element after applying the partition algorithm for quicksort (index of first element is 1) for the following array. 
+The first element (77) is selected as the pivot originally.
+
+[77, 21, 23, 3, 115, 90, 14, 222]
+
+
+#6 Hint: The problem below is not hard: i < j means the index i is on the left of index j, or is smaller.
+a[i] > a[j] means the value at index i is greater than the value at index j.
+Go through the entire array for each element and keep adding to the sum where these conditions are true.
+
+An inversion is a is a distinct pair of indices where i < j and a[i] > a[j].
+
+How many inversions are in a = [5, 17, 9, 4, 3, 6, 18, 2]?    3 + 5 based on first two elements where i = 0, 1
+ex: First element 5(i = 0) is greater than 4, 3, 2 (larger index i) to the right of  so 3 inversions for element at index 0. Continue with other elements.
+
+
+#7 Please understand the binary search algorithm. Just think of it as pseudocode. Read the comments as hints.
+Check the recursive calls to the function on line (11) and (14) and this was key for problem.
+
+int binarySearch(int[] A, int low, int high, int x)
+{
+    if (low > high) {
+        return -1;  // the element was not found and search ends
+    }
+    int mid = (low + high) / 2;  // find midpoint for search, split remaining array to search in half.
+    if (x == A[mid]) {  // found element
+        return mid;
+    }
+    else if (x < A[mid]) {  // search element is less than element where array was split
+(11)    return binarySearch(A, low,  mid - 1, x);  // Discard the upper subarray - element is not there. Recursively call method.
+    }
+    else {
+  (14)  return binarySearch(A, mid + 1,  high, x);  // Discard lower subarray - element is not there. Recursively call method.
+    }
+}
+

@@ -1,0 +1,40 @@
+
+
+
+Widgets
+
+1. From docs see example Stream in Java Docs.
+2. Create whatever classes, data structures, enums to verify what the statement is showing.
+3. Write some unit tests to verify #2.
+4. Some sample code is in repo.
+5. Some ideas are Widget class? list/collection of Widget objects, Enumeration of Colors instead 
+of using static final int types?
+6. Based on the statement what are you trying to test in the first place?
+7. At any stage, break down the statement in the Stream interface and verify why the methods are either
+intermediate methods or terminal methods, what lambdas mean (what interface, method, parameters do they denote?),
+what do intermediate methods return so you can chain them?
+
+Diego, John
+Bee, Benjamin
+Mariah, Jason, Blaine
+Roy, Bryce
+Tyler, Dennis, Blythe
+David, Jamie, Khadijeh
+Carlos, Joshua, Esteban
+Diego, John, Laxmi, Eshani, Ronald
+
+Later:
+
+From January cohort assignments: Here are the readings/topics to focus on in the below book for the next two days 4.3, 5, 6.1, 7.1, 7.2, 7.3, 10.1, 10.2, 11.1- 
+She said she will likely begin with Big O and recursion tomorrow.
+
+
+INTEGER func(INTEGER a, INTEGER b) {
+    if (b == 0)
+        return 1;
+    INTEGER temp = func(a, b / 2);
+    if (b % 2 != 0)
+        return temp * temp * a;
+    else
+        return temp * temp;
+}

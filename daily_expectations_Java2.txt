@@ -1,0 +1,145 @@
+What did we do yesterday on day 1 of Java 2?
+
+1. Some review of data structures like List, ArrayList, stacks (Stack), 
+queues (Queue), Deque
+2. Min/Max heaps - basis of Heapsort (guarantees we have min/max element at root)
+3. Related to #2 - PriorityQueue in Java - pretty nifty (saw demo)
+4. Some debugging, mostly looking at variables as we stepped into/over,
+ (step out/back) of code. Breakpoints, stack, etc.
+5. Matching parens or related exercise. You are not responsible for coding
+this on short notice. More important for seeing good use of a stack.
+6. Some code and understsanding stacks/queues in general.
+7. Saw video on heaps, now to convert to array (level order traversal of tree).
+Important thing here was the rationale, intuition of heapify, not so much the code.
+8. Pseudocode or some form of design before coding.
+9. Always have docs or related open and use your knowledge of principles to
+go as far as you can.
+
+Day 2 Java 2
+
+1. Worked on and watched some vids related to Stacks/Queues - kind of review but some other points noted.
+2. Some discussion, definition, utility of linked lists.
+3. Some basic Big O() notation and importance of recognizing relative growth curves (ex. logarithmic, linear, quadratic, exponential, constant, etc.).
+4. Reviewed concept of algorithms and we need this for logarithmic growth.
+5. Some basic recursion and how it works. Recognizing it can be a poor way of solving problems in some instances.
+6. Factorials and we saw this in factorial growth - traveling salesperson problem.
+7. Binary tree basics especially traversing with postfix/postorder (inorder, preorder). We worked on level order traversal with heaps.
+8. Operators and operands and how they are modeled with binary trees and stacks. (push/pop operations).
+
+Day 3 Java 2
+
+1. Big(O) review and predicting some of this with sorts, searches like binary search.
+2. Some trees again.
+3. Insertion sort, bubble sort and some of the problems in terms of performance here.
+4. Research some algorithms and see how we use some that we may not have realized.
+5. Kahoot - you did pretty well on this - stacks, queues, other data structures like heaps.
+6. More info on linked list vs. array and Big(O) characteristics of various operations. Remember cheat sheet on Big(O).
+
+Days 4 and 5
+
+1. Recursion and saw how this works in some basic cases.
+2. Then worked on some problems that could get more than basic. Saw how we could later use recursion in applications.
+3. Continued with Big(O) and recursion with applications especially seeing how it related to sorting.
+4. Mergesort with time complexity, recursion, splitting, merging, sorting.
+5. Quicksort with our friend the partition and the partition method. Algorithm can depend on placement of pivot element.
+Then saw how we use recursion to sort, as in mergesort above.
+6. We saw the code was really not that difficult, especially when we know or see the pseudocode first.
+10. Saw how these sorting algorithms use divide and conquer (induction).
+11. Compared time complexity to some of the less desirable sort algorithms like selection, insertion, bubble - O(n^2).
+12. Looked at Comparable interface and how this can work with sorting (Comparator also).
+13. Absolute coding is not as important as seeing how we can check the documentation/resources to use it.
+
+Day 6
+
+1. Hashes, hash functions, examples of using simple and then more complex hash functions.
+2. Some exercises and demos on hashes, along with "theoretical" discussion and rationale, including videos.
+3. Different types of maps like HashMap, TreeMap, HashSet, LinkedHashMap etc.
+4. Practice again with debugging and actually hitting the Java Code for HashMap, LinkedHashMap. Look at all the hash type methods!.
+5. Checked out the hashCode method for Java String.
+6. We want/wanted to understand the purpose and rationale of hashing, without worrying about deep theoretical details.
+7. Collisions vs. memory and other factors like capacity, load factors.
+
+Day 7
+
+Presentations are below.
+
+Without Lambda Expression  OK
+Java Lambda Expression Example  OK
+Java Lambda Expression Example: No Parameter  OK Khadijeh
+Java Lambda Expression Example: Single Parameter  OK Tyler, Carlos
+Java Lambda Expression Example: Multiple Parameters  OK Blythe
+Java Lambda Expression Example: with or without return keyword   OK Dennis
+Java Lambda Expression Example: Foreach Loop  OK
+Java Lambda Expression Example: Multiple Statements  OK
+Java Lambda Expression Example: Creating Thread  OK can use Tom but we did this so not too bad
+Java Lambda Expression Example: Comparator  OK
+Java Lambda Expression Example: Filter Collection Data  OK  Matthew  can use Tom  - uses Stream but docs can help
+Java Lambda Expression Example: Event Listener  OK
+
+1. Lambdas and functional programming in general.
+2. How they relate, but maybe not exactly like, inner classes (no class name, no method name for inner classes)
+3. functional interfaces and how we can assign lambdas to these interfaces.
+4. Discussed some of the more detailed aspects of lambdas including some syntax considerations.
+5. Three components of lambdas.
+6. How to read docs or references to find method names, # of arguments, types of arguments for the abstract method, return type of the method.
+7. Check Comparator vs. Comparable interfaces.
+8. @FunctionalInterface annotation, general Java cases, package java.util.function.
+
+Day 8
+
+Ex. 4. Java Foundations 1.8  
+1. Identify anon. inner class but details are not critical - sort of ugly.
+2. Adding a listener to some sort of widget that takes an interface as a parameter.
+3. This interface in step 2 has one method. We are overriding it. Wow, this must be a
+functional interface.
+4. The method we override returns void and has three parameters.
+5. In addition, looks like there is some implementation.
+6. Holy moly! This looks like it can be changed/translated to a lambda expression. We must 
+borderline geniuses if we see this.
+7. So if #6 is true, how do we change this to a lambda expression?
+
+Ex. 1, 2, 3
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+    //numbers.forEach( (n) ->  System.out.println(n) );
+    numbers.forEach(System.out::println); // method reference
+    
+    ProdInterface p = (a, b) -> a*b;
+    Stringable str = () -> {return "Hello HCL";};
+    System.out.println(str.getStr());
+    System.out.println(p.prod(44, 3.2));
+    AnInterface an = ArrayList::new;
+  }
+}
+
+interface ProdInterface {
+	double prod(double a, double b);
+}
+
+interface Stringable {
+	String getStr();
+}
+
+interface AnInterface {
+  	ArrayList<Integer> showElements();
+    
+}
+
+Day 9
+
+1. More with lambdas.
+2. Reviewed functional interfaces, one abstract method only, @FunctionalInterface annotation is good practice.
+3. Started Streams - can use them with lambdas.
+4. Producer, Consumer, Predicate, Function
+5. method references again including constructor reference - Can method reference be substituted for a lambda?
+6. went over some previous data structures like stack, heap, etc.
+7. Some exercises or parts of same involved maps - don't be too concerned with these as a whole (same flatMap)
+8. Understood concept of map, filter, reduce.
+
